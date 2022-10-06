@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-const CommonLabel = ({ text, color, bgColor }) => {
+const CommonLabel = ({ text, color, bgColor }: any) => {
     return (
         <CommonLabelTemplate color={color} bgColor={bgColor}>
             {text}
@@ -10,7 +10,7 @@ const CommonLabel = ({ text, color, bgColor }) => {
 
 export default CommonLabel;
 
-const CommonLabelTemplate = styled.span`
+const CommonLabelTemplate = styled.span<{ color: any; bgColor: any }>`
     display: inline-block;
     width: 80px;
     padding: 3px 0;

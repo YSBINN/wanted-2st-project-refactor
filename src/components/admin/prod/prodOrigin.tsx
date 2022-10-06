@@ -2,65 +2,57 @@ import { useCallback, useEffect } from 'react';
 import styled from 'styled-components';
 import { useInput } from '../../../hooks/useInupt';
 import { AdminSubject } from '../../../styles/common';
-import Button from '../../common/button/button';
 import Input from '../../common/input/input';
 import ProdTable from './table/prodTable';
 
-const ProdOption = ({ prodOption, setProdOtion }) => {
+const ProdOrign = ({ prodOrigin, setProdOrigin }: any) => {
     const [optionName, onChangeOptionName, setOptionName] = useInput('');
-    const [optionPrice, onChangeOptionPrice, setOptionPrice] = useInput('');
+    const [optionContent, onChangeOptionContent, setOptionContent] = useInput('');
 
     const onAddProdOption = useCallback(() => {
-        if (optionName.trim() === '' && optionPrice.trim() === '') {
+        if (optionName.trim() === '' && optionContent.trim() === '') {
             return;
         }
-        setProdOtion([...prodOption, { name: optionName, content: optionPrice }]);
-    }, [prodOption, optionName, optionPrice]);
+        setProdOrigin([...prodOrigin, { name: optionName, content: optionContent }]);
+    }, [prodOrigin, optionName, optionContent]);
 
     useEffect(() => {
         setOptionName('');
-        setOptionPrice('');
-    }, [prodOption]);
+        setOptionContent('');
+    }, [prodOrigin]);
 
     return (
         <>
             <ProdOptionTemplate>
-                <AdminSubject>상품 옵션</AdminSubject>
+                <AdminSubject>상품 제공 공시</AdminSubject>
                 <ProdOptionForm>
                     <Input
-                        width="70%"
+                        width="20%"
                         mainColor="#fff"
                         subColor="#222"
+                        placeholder="--명칭--"
+                        style={{ textAlign: 'center' }}
                         value={optionName}
                         onChange={onChangeOptionName}
                     />
                     <span>
-                        가격
                         <Input
+                            width="760px"
                             mainColor="#fff"
                             subColor="#222"
                             margin="0 8px"
-                            value={optionPrice}
-                            onChange={onChangeOptionPrice}
+                            value={optionContent}
+                            onChange={onChangeOptionContent}
                         />
-                        원
                     </span>
-                    <Button
-                        size="small"
-                        mainColor="#61CA3C"
-                        padding="1px"
-                        fontSzie="12px"
-                        onClick={onAddProdOption}
-                    >
-                        추가
-                    </Button>
+                    <Button onClick={onAddProdOption}>추가</Button>
                 </ProdOptionForm>
             </ProdOptionTemplate>
-            <ProdTable type="option" data={prodOption} />
+            <ProdTable type="origin" data={prodOrigin} />
         </>
     );
 };
-export default ProdOption;
+export default ProdOrign;
 
 const ProdOptionTemplate = styled.div`
     margin: 16px 0;
@@ -70,4 +62,17 @@ const ProdOptionForm = styled.div`
     margin-top: 8px;
     display: flex;
     justify-content: space-between;
+`;
+
+const Button = styled.button`
+    width: 4rem;
+    background-color: #61ca3c;
+    padding: 1px;
+    font-size: 12px;
+    color: ${props => props.theme.subColor};
+    border-radius: 8px;
+
+    :hover {
+        opacity: 0.6;
+    }
 `;

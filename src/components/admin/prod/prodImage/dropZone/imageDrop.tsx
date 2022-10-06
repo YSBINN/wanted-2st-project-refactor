@@ -1,7 +1,7 @@
 import Dropzone from 'react-dropzone';
 import styled from 'styled-components';
 
-const ImageDorpozne = ({ onDropHandler }) => {
+const ImageDorpozne = ({ onDropHandler }: any) => {
     return (
         <Dropzone onDrop={onDropHandler}>
             {({ getRootProps, getInputProps }) => (

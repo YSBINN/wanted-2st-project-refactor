@@ -21,8 +21,8 @@ const SideList = () => {
 
     // subject click Handler
     const onSubjectClick = useCallback(
-        e => {
-            const index = e.currentTarget.getAttribute('data');
+        (e: any) => {
+            const index = e.currentTarget.getAttribute('data-index');
             const List = [...sideLst];
             List[index].subject.state === true
                 ? (List[index].subject.state = false)
@@ -34,9 +34,9 @@ const SideList = () => {
 
     // List click Handler
     const onListClick = useCallback(
-        e => {
-            const parentIndx = e.target.parentNode.getAttribute('parentData') || 0;
-            const index = e.currentTarget.getAttribute('data');
+        (e: any) => {
+            const parentIndx: number = e.target.parentNode.getAttribute('parentData') || 0;
+            const index: number = e.currentTarget.getAttribute('data-index');
             const List = [...sideLst];
             List.map(v => {
                 v.list?.map(list => {
@@ -56,8 +56,8 @@ const SideList = () => {
         <ListTemplate>
             {sideLst.map((v, index) => (
                 <li key={index}>
-                    <p data={index} onClick={onSubjectClick}>
-                        {v.subject.name}{' '}
+                    <p data-index={index} onClick={onSubjectClick}>
+                        {v.subject.name}
                         <span>
                             <FontAwesomeIcon icon={v.subject.state ? faCaretUp : faCaretDown} />
                         </span>
@@ -67,7 +67,7 @@ const SideList = () => {
                         v.list.map((list, index) => (
                             <Link to={'/admin' + list.link}>
                                 <ListItem parentData={index} state={list.state}>
-                                    <li key={index} data={index} onClick={onListClick}>
+                                    <li key={index} data-index={index} onClick={onListClick}>
                                         {list.name}
                                     </li>
                                 </ListItem>
@@ -99,7 +99,7 @@ const ListTemplate = styled.ul`
     }
 `;
 
-const ListItem = styled.ul`
+const ListItem = styled.ul<any>`
     ${props => props.state && ' background-color: #3D603A'};
     font-size: 16px;
 

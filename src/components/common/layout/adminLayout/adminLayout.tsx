@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import AdminLayoutHeader from './header/header';
 import AdminLayoutSide from './side/side';
 
-const AdminLayout = ({ children, type }) => {
+const AdminLayout = ({ children, type }: any) => {
     return (
         <>
             <AdminLayoutHeader />

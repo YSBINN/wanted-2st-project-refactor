@@ -183,7 +183,7 @@ const InputContainer = styled.div`
     margin-top: 10px;
 `;
 
-const InputHeader = styled.div`
+const InputHeader = styled.div<any>`
     font-size: 14px;
     font-weight: 400;
     margin-bottom: 4px;
@@ -194,7 +194,7 @@ const InputHeader = styled.div`
     }
 `;
 
-const InputBox = styled.div`
+const InputBox = styled.div<any>`
     display: flex;
     width: ${props => props.width || '100%'};
     height: 40px;

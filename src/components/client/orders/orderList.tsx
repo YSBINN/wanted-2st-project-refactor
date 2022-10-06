@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 
 export default function OrderList() {
-    const [order, setOrder] = useState([]);
+    const [order, setOrder] = useState<any>([]);
     const now = new Date();
     const year = now.getFullYear();
     const month = now.getMonth();
@@ -12,7 +12,7 @@ export default function OrderList() {
         ...order,
         prodPrice: order.prodPrice?.replace(/\B(?=(\d{3})+(?!\d))/g, ','),
     };
-    const { salePrice, prodImg, prodName, prodPrice, id } = newOrder;
+    const { salePrice, prodImg, prodName, prodPrice, id }: any = newOrder;
 
     useEffect(() => {
         axios

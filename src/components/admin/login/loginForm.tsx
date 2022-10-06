@@ -5,8 +5,6 @@ import logo from '../../../assets/img/logo.png';
 import { useInput } from '../../../hooks/useInupt';
 import AdminUserService from '../../../services/admin/adminUserService';
 import TokenService from '../../../services/tokenService';
-import Button from '../../common/button/button';
-import Input from '../../common/input/input';
 
 const AdminLoginForm = () => {
     const [email, onChangeEmail] = useInput('');
@@ -27,9 +25,9 @@ const AdminLoginForm = () => {
                     alert('다시 한번 시도해주세요');
                 }
             }
-        } catch (err) {
-            console.error(err);
-            throw new Error(err);
+        } catch (error) {
+            console.error(error);
+            throw new Error(`${error}`);
         }
     }, [email, password]);
 
@@ -41,47 +39,23 @@ const AdminLoginForm = () => {
             </div>
             <div className="form">
                 <p>
-                    <Input
-                        placeholder="ID"
-                        fontSzie="12px"
-                        margin="8px 0"
-                        mainColor="none"
-                        subColor="#000"
-                        width="280px"
-                        height="32px"
-                        style={{ borderBottom: '1px solid #000', textAlign: 'center' }}
+                    <EmailInput
+                        type="text"
+                        placeholder="id"
                         value={email}
                         onChange={onChangeEmail}
                     />
                 </p>
                 <p>
-                    <Input
+                    <PasswordInput
                         placeholder="PASSWORD"
-                        fontSzie="12px"
-                        margin="8px 0"
-                        mainColor="none"
-                        subColor="#000"
-                        width="280px"
-                        height="32px"
                         type="password"
-                        style={{ borderBottom: '1px solid #000', textAlign: 'center' }}
                         value={password}
                         onChange={onChangePassword}
                     />
                 </p>
                 <p>
-                    <Button
-                        fontSzie="16px"
-                        mainColor="#61CA3C"
-                        padding="4px 32px"
-                        margin="16px 0 0 0"
-                        width="220px"
-                        height="48px"
-                        style={{ fontWeight: 'bold' }}
-                        onClick={onAdminLogin}
-                    >
-                        L O G I N
-                    </Button>
+                    <SubmitButton onClick={onAdminLogin}>L O G I N</SubmitButton>
                 </p>
             </div>
         </LoginFromTemplate>
@@ -121,5 +95,44 @@ const LoginFromTemplate = styled.div`
         & > p {
             text-align: center;
         }
+    }
+`;
+
+const EmailInput = styled.input`
+    font-size: 12px;
+    margin: 8px 0;
+    background-color: ${props => props.theme.mainColor};
+    color: black;
+    width: 200px;
+    height: 32px;
+    border-bottom: 1px solid black;
+    text-align: center;
+    border: none;
+`;
+
+const PasswordInput = styled.input`
+    font-size: 12px;
+    margin: 8px 0;
+    background-color: ${props => props.theme.mainColor};
+    color: black;
+    width: 280px;
+    height: 32px;
+    border-bottom: 1px solid black;
+    text-align: center;
+    border: none;
+`;
+
+const SubmitButton = styled.button`
+    width: 220px;
+    font-size: 16px;
+    margin: 16px 0 0 0;
+    padding: 4px 32px;
+    background-color: #61ca3c;
+    color: ${props => props.theme.subColor};
+    border-radius: 8px;
+    font-weight: bold;
+
+    :hover {
+        opacity: 0.6;
     }
 `;

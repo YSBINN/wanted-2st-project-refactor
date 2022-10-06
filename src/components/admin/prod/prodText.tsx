@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 
 const ProdText = () => {
-    const [state, setState] = useState({
+    const [state, setState] = useState<any>({
         data: '',
         editor: null,
     });
@@ -16,7 +16,7 @@ const ProdText = () => {
                 id={'ck-editor-text'}
                 editor={ClassicEditor}
                 data={state.data}
-                onReady={editor => {
+                onReady={(editor: any) => {
                     console.log('Editor is ready to use!', editor);
                 }}
             />

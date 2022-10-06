@@ -1,11 +1,11 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
 import styled from 'styled-components';
 import { AdminSubject } from '../../../../styles/common';
 import ImageDorpozne from './dropZone/imageDrop';
 
-const ProdImage = ({ prodFiles, setProdFiles }) => {
+export default function ProdImage({ prodFiles, setProdFiles }: any) {
     const onDropHandler = useCallback(
-        files => {
+        (files: any[]) => {
             if (prodFiles.map <= 10 || files.length <= 10) {
                 setProdFiles(
                     files.map(file =>
@@ -22,8 +22,8 @@ const ProdImage = ({ prodFiles, setProdFiles }) => {
     );
 
     const onPreviewDelete = useCallback(
-        preview => {
-            const deleteFiles = prodFiles.filter(v => v.preview !== preview);
+        (preview: any) => {
+            const deleteFiles = prodFiles.filter((v: { preview: any }) => v.preview !== preview);
             setProdFiles(deleteFiles);
         },
         [prodFiles],
@@ -35,7 +35,7 @@ const ProdImage = ({ prodFiles, setProdFiles }) => {
                 이미지 등록 <span>(최대 10개)</span>
             </AdminSubject>
             <InfoPreviewContainer>
-                {prodFiles.map(v =>
+                {prodFiles.map((v: { preview: string | undefined }) =>
                     prodFiles.length <= 10 ? (
                         <InfoPreviewWrapper onClick={() => onPreviewDelete(v.preview)}>
                             <div>
@@ -51,8 +51,7 @@ const ProdImage = ({ prodFiles, setProdFiles }) => {
             <ImageDorpozne onDropHandler={onDropHandler} />
         </>
     );
-};
-export default ProdImage;
+}
 
 const InfoPreviewContainer = styled.div`
     padding: 4px;

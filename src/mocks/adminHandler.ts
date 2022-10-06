@@ -9,7 +9,7 @@ export const AdminHandler = [
             totalPage: 15,
             currentPage: page,
             data: Array(10)
-                .fill()
+                .fill('')
                 .map(() => ({
                     id: shortId.generate(),
                     prodImg: { src: faker.image.image() },
@@ -31,12 +31,12 @@ export const AdminHandler = [
     }),
 
     rest.put('https:/fruitte.co/api/admin/goods/:goodsId/showflag', (req, res, ctx) => {
-        const { showFlag, id } = req.body;
+        const { showFlag, id }: any = req.body;
         return res(ctx.json({ showFlag, id }));
     }),
 
     rest.post('https:/fruitte.co/api/admin/user/login', (req, res, ctx) => {
-        const { email, password } = req.body;
+        const { email, password }: any = req.body;
         if (email === 'test' && password === '1234') {
             return res(ctx.json({ message: true, data: { token: faker.lorem.sentence() } }));
         } else return res(ctx.json({ message: false }));

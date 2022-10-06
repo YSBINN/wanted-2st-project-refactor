@@ -15,7 +15,7 @@ const Button = ({
     onKeyPress,
     type,
     style,
-}) => {
+}: any) => {
     return (
         <ButtonWrapper
             type={type}
@@ -38,7 +38,7 @@ const Button = ({
 };
 export default Button;
 
-const ButtonWrapper = styled.button`
+const ButtonWrapper = styled.button<any>`
     width: ${props =>
         props.width
             ? props.width

@@ -9,7 +9,7 @@ export const ClientHandler = [
             totalPage: 10,
             currentPage: page,
             data: Array(32)
-                .fill()
+                .fill('')
                 .map(() => ({
                     id: shortId.generate(),
                     prodImg: { src: faker.image.image() },
@@ -35,7 +35,7 @@ export const ClientHandler = [
             id: goodsId,
             prodImg: { src: faker.image.image() },
             subImg: Array(faker.datatype.number({ min: 1, max: 5 }))
-                .fill()
+                .fill('')
                 .map((_, id) => ({ id, src: faker.image.image() })),
             prodName: faker.lorem.words(faker.datatype.number({ min: 3, max: 5 })),
             originalPrice: faker.commerce.price(20000, 30000, 0),
@@ -50,13 +50,13 @@ export const ClientHandler = [
                 delivery: faker.datatype.number({ min: 0, max: 1 }),
             },
             choice: Array(faker.datatype.number({ min: 1, max: 3 }))
-                .fill()
+                .fill('')
                 .map(() => ({
                     name: faker.commerce.product(),
                     price: faker.commerce.price(10000, 20000, 0),
                 })),
             preview: Array(faker.datatype.number({ min: 1, max: 3 }))
-                .fill()
+                .fill('')
                 .map(() => ({
                     point: faker.datatype.number({ min: 1, max: 5 }),
                     content: faker.lorem.paragraph(),

@@ -1,17 +1,16 @@
-import React from 'react';
 import styled from 'styled-components';
 
-function Pagination({ currentPage, setCurrentPage, totalPage }) {
+function Pagination({ currentPage, setCurrentPage, totalPage }: any) {
     return (
         <Container>
             <PageButton
-                onClick={() => setCurrentPage(prev => prev - 1)}
+                onClick={() => setCurrentPage((prev: number) => prev - 1)}
                 disabled={currentPage === 1}
             >
                 &lt;
             </PageButton>
             {Array(totalPage)
-                .fill()
+                .fill('')
                 .map((_, index) => (
                     <PageButton
                         key={`Container_${index + 1}`}
@@ -22,7 +21,7 @@ function Pagination({ currentPage, setCurrentPage, totalPage }) {
                     </PageButton>
                 ))}
             <PageButton
-                onClick={() => setCurrentPage(prev => prev + 1)}
+                onClick={() => setCurrentPage((prev: number) => prev + 1)}
                 disabled={currentPage === totalPage}
             >
                 &gt;
@@ -39,7 +38,7 @@ const Container = styled.nav`
     margin: 16px;
 `;
 
-const PageButton = styled.button`
+const PageButton = styled.button<any>`
     padding: 8px 16px;
     border-radius: 4px;
     cursor: pointer;

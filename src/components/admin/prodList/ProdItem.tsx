@@ -1,9 +1,9 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import styled from 'styled-components';
 import CommonButton from '../../common/button';
 import CommonLabel from '../../common/label';
 
-const AdminProdListItem = ({ data, onEditShowFlag, onRemoveProdItem }) => {
+const AdminProdListItem = ({ data, onEditShowFlag, onRemoveProdItem }: any) => {
     const changedPrice = data.salePrice.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',');
 
     const onEditHandler = useCallback(() => {

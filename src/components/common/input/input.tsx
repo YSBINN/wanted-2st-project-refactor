@@ -13,7 +13,7 @@ const Input = ({
     placeholder,
     onChange,
     value,
-}) => {
+}: any) => {
     return type === 'textarea' ? (
         <TextAreaWrapper
             width={width}
@@ -47,7 +47,7 @@ const Input = ({
 };
 export default Input;
 
-const InputWrapper = styled.input`
+const InputWrapper = styled.input<any>`
     width: ${props => props.width && props.width};
     height: ${props => props.height && props.height};
     margin: ${props => props.margin && props.margin};
@@ -67,7 +67,7 @@ const InputWrapper = styled.input`
     }
 `;
 
-const TextAreaWrapper = styled.textarea`
+const TextAreaWrapper = styled.textarea<any>`
     resize: none;
     width: ${props => props.width && props.width};
     height: ${props => props.height && props.height};

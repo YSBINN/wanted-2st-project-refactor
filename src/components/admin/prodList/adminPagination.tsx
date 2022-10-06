@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
-const AdminProdListPagination = ({ pageLength, curPage, setCurPage }) => {
+const AdminProdListPagination = ({ pageLength, curPage, setCurPage }: any) => {
     const onClickDecrease = () => {
-        setCurPage(prev => parseInt(prev) - 1);
+        setCurPage((prev: string) => parseInt(prev) - 1);
     };
 
     const onClickIncrease = () => {
-        setCurPage(prev => parseInt(prev) + 1);
+        setCurPage((prev: string) => parseInt(prev) + 1);
     };
 
     return (
@@ -16,7 +16,7 @@ const AdminProdListPagination = ({ pageLength, curPage, setCurPage }) => {
                     &lt;
                 </PaginationButton>
                 {Array(pageLength)
-                    .fill()
+                    .fill('')
                     .map((_, i) => (
                         <PaginationButton
                             key={i + 1}

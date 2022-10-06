@@ -1,4 +1,3 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -52,7 +51,7 @@ const Footer = () => {
             </TopFooter>
             <BottomFooter>
                 <IconWrapper>
-                    <FontAwesomeIcon icon="fa-brands fa-instagram" />
+                    <FontAwesomeIcon icon={['fab', 'instagram']} />
                 </IconWrapper>
                 <TopInfo>
                     <span>상호명: Local & Life Inc. | 대표: 홍인기 | 전화번호: 010-8828-0472 </span>

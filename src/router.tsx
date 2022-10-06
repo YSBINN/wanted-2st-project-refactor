@@ -9,6 +9,7 @@ import ProdDetail from './pages/client/prodDetail';
 import Orders from './pages/client/orders/orders';
 import ProductPage from './pages/client/ProductListPage';
 import Order from './pages/client/order/order';
+import React from 'react';
 
 const Router = () => {
     return (
@@ -26,8 +27,8 @@ const Router = () => {
                     {/* admin */}
                     <Route path="/admin" element={<AdminLoginPage />} />
                     <Route element={<AdminRoute />}>
-                        <Route exact path="/admin/prodList" element={<AdminProdListPage />} />
-                        <Route exact path="/admin/prod" element={<AdminProdPage />} />
+                        <Route path="/admin/prodList" element={<AdminProdListPage />} />
+                        <Route path="/admin/prod" element={<AdminProdPage />} />
                     </Route>
                 </Routes>
             </BrowserRouter>
