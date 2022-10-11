@@ -1,4 +1,4 @@
-import axios from 'axios';
+import prodListApi from 'api/client/prodListApi';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Pagination from './components/Pagination';
@@ -9,17 +9,19 @@ export default function ProductListPage() {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPage, setTotalPage] = useState(0);
 
+    const getProdList = async () => {
+        const res = await prodListApi.get();
+        try {
+            setProducts(res.data);
+            setTotalPage(res.totalPage);
+        } catch (e) {
+            console.error(e);
+            throw new Error(e);
+        }
+    };
+
     useEffect(() => {
-        axios
-            .get('https:/fruitte.co/api/goods?page=5')
-            .then(({ data }) => {
-                setProducts(data.data);
-                setTotalPage(data.totalPage);
-            })
-            .catch(err => {
-                console.error(err);
-                throw new Error(err);
-            });
+        getProdList();
     }, [currentPage]);
 
     return (

@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import prodDetailService from '../../../services/client/prodDetailService';
+import prodDetailApi from '../../../api/client/prodDetailApi';
 
 const ProdDetail = () => {
     const { id } = useParams();
@@ -17,8 +17,8 @@ const ProdDetail = () => {
     useEffect(() => {
         const getProdDetail = async () => {
             try {
-                const res = await prodDetailService.get(id);
-                setProdInfo(res.data);
+                const res = await prodDetailApi.get(id);
+                setProdInfo(res);
             } catch (err) {
                 console.error(err);
                 throw new Error(err);

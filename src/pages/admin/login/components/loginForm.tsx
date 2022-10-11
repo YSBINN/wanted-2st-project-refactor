@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import logo from '../../../../assets/img/logo.png';
 import { useInput } from '../../../../hooks/useInupt';
-import AdminUserService from '../../../../services/admin/adminUserService';
+import AdminUserApi from '../../../../api/admin/adminUserApi';
 import TokenService from '../../../../services/tokenService';
 
 const AdminLoginForm = () => {
@@ -13,12 +13,11 @@ const AdminLoginForm = () => {
 
     const onAdminLogin = useCallback(async () => {
         try {
-            const res = await AdminUserService.login({ email, password });
-            if (!res.data.message) {
+            const res = await AdminUserApi.postLogin({ email, password });
+            if (!res.message) {
                 alert('아이디와 비밀번호를 다시 확인해주세요');
             } else {
-                console.log(res.data.data);
-                TokenService.set({ key: 'token', value: res.data.data.token });
+                TokenService.set({ key: 'token', value: res.data.token });
                 if (TokenService.get('token')) {
                     navigate('/admin/prodList');
                 } else {

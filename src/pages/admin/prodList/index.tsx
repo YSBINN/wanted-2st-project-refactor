@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import AdminProdListItem from './components/ProdItem';
 import AdminProdListPagination from './components/adminPagination';
 import AdminProdSearchHeader from './components/SearchHeader';
-import AdminProdService from '../../../services/admin/adminProdService';
+import AdminProdApi from '../../../api/admin/adminProdApi';
 
 export default function AdminProdListPage() {
     const [curData, setCurData] = useState([]);
@@ -12,11 +12,10 @@ export default function AdminProdListPage() {
 
     const getProdList = async () => {
         try {
-            const res = await AdminProdService.get(curPage);
-
-            setCurData(res.data.data);
-            setPageLength(res.data.totalPage);
-            setCurPage(res.data.currentPage);
+            const res = await AdminProdApi.get(curPage);
+            setCurData(res.data);
+            setPageLength(res.totalPage);
+            setCurPage(res.currentPage);
         } catch (err) {
             console.error(err);
             throw new Error(err);
@@ -30,7 +29,7 @@ export default function AdminProdListPage() {
     const onEditShowFlag = useCallback(
         async (showFlag, id) => {
             try {
-                const res = await AdminProdService.edit({ showFlag, id });
+                const res = await AdminProdApi.edit({ showFlag, id });
                 if (res.status === 200) {
                     const data = [...curData];
                     data.find(v => v.id === res.data.id).showFlag = res.data.showFlag;
@@ -46,7 +45,7 @@ export default function AdminProdListPage() {
 
     const onRemoveProdItem = async id => {
         try {
-            const res = await AdminProdService.remove(id);
+            const res = await AdminProdApi.remove(id);
             if (res.status === 200) {
                 const resId = res.data.slice(1);
                 const newData = curData.filter(it => it.id !== resId);

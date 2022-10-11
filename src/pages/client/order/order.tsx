@@ -6,7 +6,6 @@ const Order = () => {
     const navigate = useNavigate();
 
     const prodName = useRef(sessionStorage.getItem('prodName'));
-    const prodCount = useRef(sessionStorage.getItem('prodCount'));
     const prodIme = useRef(sessionStorage.getItem('prodImg'));
     const price = useRef(sessionStorage.getItem('price'));
 
