@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import OrderList from '../../../components/client/orders/orderList';
+import OrderList from './components/orderList';
 
 export default function Orders() {
     return (

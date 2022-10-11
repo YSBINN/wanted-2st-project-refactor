@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import CommonLabel from '../../common/label';
+import CommonLabel from '../../../../components/label';
 
 const AdminProdSearchHeader = () => {
     return (

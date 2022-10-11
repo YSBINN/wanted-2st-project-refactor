@@ -6,7 +6,7 @@ import prodDetailService from '../../../services/client/prodDetailService';
 const ProdDetail = () => {
     const { id } = useParams();
     const navigate = useNavigate();
-    const [prodInfo, setProdInfo] = useState();
+    const [prodInfo, setProdInfo] = useState<any>();
     const [subImgSrc, setSubImgSrc] = useState('');
     const [overSubImg, setOverSubImg] = useState(true);
     const [DropDown, setDropDown] = useState(false);
@@ -74,10 +74,10 @@ const ProdDetail = () => {
     };
 
     const onBuyAction = () => {
-        sessionStorage.setItem('price', totalPrice);
+        sessionStorage.setItem('price', `${totalPrice}`);
         sessionStorage.setItem('prodName', prodName);
-        sessionStorage.setItem('prodCount', totalCount);
-        sessionStorage.setItem('prodImg', prodImg.src);
+        sessionStorage.setItem('prodCount', `${totalCount}`);
+        sessionStorage.setItem('prodImg', prodImg?.src);
         navigate('/order');
     };
 
@@ -234,7 +234,7 @@ const WrapSubImg = styled.div`
     margin-top: 5%;
     height: 5%;
 `;
-const ProdSubImg = styled.img`
+const ProdSubImg = styled.img<any>`
     width: 18%;
     margin-right: 5px;
     height: 100%;

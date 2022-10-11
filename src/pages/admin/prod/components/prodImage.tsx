@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import styled from 'styled-components';
 import { AdminSubject } from '../../../../styles/common';
-import ImageDorpozne from './dropZone/imageDrop';
+import ImageDorpozne from './imageDrop';
 
 export default function ProdImage({ prodFiles, setProdFiles }: any) {
     const onDropHandler = useCallback(

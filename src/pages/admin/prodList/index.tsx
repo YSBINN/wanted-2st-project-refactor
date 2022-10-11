@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
-import AdminProdListItem from '../../components/admin/prodList/ProdItem';
-import AdminProdListPagination from '../../components/admin/prodList/adminPagination';
-import AdminProdSearchHeader from '../../components/admin/prodList/SearchHeader';
-import AdminProdService from '../../services/admin/adminProdService';
+import AdminProdListItem from './components/ProdItem';
+import AdminProdListPagination from './components/adminPagination';
+import AdminProdSearchHeader from './components/SearchHeader';
+import AdminProdService from '../../../services/admin/adminProdService';
 
-const AdminProdListPage = () => {
+export default function AdminProdListPage() {
     const [curData, setCurData] = useState([]);
     const [pageLength, setPageLength] = useState(null);
     const [curPage, setCurPage] = useState(1);
@@ -80,8 +80,7 @@ const AdminProdListPage = () => {
             />
         </ProdListPageMain>
     );
-};
-export default AdminProdListPage;
+}
 
 const ProdListPageMain = styled.main`
     position: relative;

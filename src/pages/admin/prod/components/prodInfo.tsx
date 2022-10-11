@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { AdminSubject } from '../../../../styles/common';
-import InfoDetail from './detail/infoDetial';
-import InfoIamge from './image/infoImage';
+import InfoDetail from './infoDetial';
+import InfoIamge from './infoImage';
 
 const ProdInfo = () => {
     return (

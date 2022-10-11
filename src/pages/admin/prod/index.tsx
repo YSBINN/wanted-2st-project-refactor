@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import ProdImage from '../../components/admin/prod/prodImage/prodImage';
-import ProdInfo from '../../components/admin/prod/prodinfo/prodInfo';
-import ProdOption from '../../components/admin/prod/prodOption';
-import ProdOrign from '../../components/admin/prod/prodOrigin';
-import ProdText from '../../components/admin/prod/prodText';
-import Button from '../../components/common/button/button';
+import ProdImage from './components/prodImage';
+import ProdInfo from './components/prodInfo';
+import ProdOption from './components/prodOption';
+import ProdOrign from './components/prodOrigin';
+import ProdText from './components/prodText';
+import Button from '../../../components/button/button';
 
-const AdminProdPage = () => {
+export default function AdminProdPage() {
     const [prodFiles, setProdFiles] = useState([]);
     const [prodOption, setProdOtion] = useState([]);
     const [prodOrigin, setProdOrigin] = useState([]);
@@ -24,8 +24,7 @@ const AdminProdPage = () => {
             </Button>
         </AdminProdContainer>
     );
-};
-export default AdminProdPage;
+}
 
 const AdminProdContainer = styled.div`
     margin: 0 auto;

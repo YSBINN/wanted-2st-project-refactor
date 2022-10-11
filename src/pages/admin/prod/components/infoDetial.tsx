@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Input from '../../../../common/input/input';
+import Input from '../../../../components/input/input';
 
 const InfoDetail = () => {
     return (

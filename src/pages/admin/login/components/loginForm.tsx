@@ -1,10 +1,10 @@
 import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import logo from '../../../assets/img/logo.png';
-import { useInput } from '../../../hooks/useInupt';
-import AdminUserService from '../../../services/admin/adminUserService';
-import TokenService from '../../../services/tokenService';
+import logo from '../../../../assets/img/logo.png';
+import { useInput } from '../../../../hooks/useInupt';
+import AdminUserService from '../../../../services/admin/adminUserService';
+import TokenService from '../../../../services/tokenService';
 
 const AdminLoginForm = () => {
     const [email, onChangeEmail] = useInput('');
